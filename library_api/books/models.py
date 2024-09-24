@@ -4,9 +4,10 @@ from authors.models import Author
 
 
 class Book(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255,  db_index=True) # indexing it will help in calcualting recomendation
     description = models.TextField()
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, db_index=True) # indexing it will help in calcualting recomendation
+    description = models.TextField()
     published_date = models.DateField()
 
     def __str__(self):
